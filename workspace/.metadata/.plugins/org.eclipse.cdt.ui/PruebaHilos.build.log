@@ -1,0 +1,33 @@
+19:35:56 **** Incremental Build of configuration Debug for project PruebaHilos ****
+make all 
+Building file: ../hilos.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"hilos.d" -MT"hilos.d" -o "hilos.o" "../hilos.c"
+../hilos.c: In function ‘crearHiloDetachable’:
+../hilos.c:54:6: warning: variable ‘h1’ set but not used [-Wunused-but-set-variable]
+  int h1;
+      ^
+../hilos.c: At top level:
+../hilos.c:60:6: warning: return type of ‘main’ is not ‘int’ [-Wmain]
+ void main() {
+      ^
+../hilos.c: In function ‘main’:
+../hilos.c:91:2: warning: implicit declaration of function ‘sleep’ [-Wimplicit-function-declaration]
+  sleep(1);
+  ^
+../hilos.c:61:10: warning: unused variable ‘h2’ [-Wunused-variable]
+  int h1, h2;
+          ^
+../hilos.c:61:6: warning: unused variable ‘h1’ [-Wunused-variable]
+  int h1, h2;
+      ^
+Finished building: ../hilos.c
+ 
+Building target: PruebaHilos
+Invoking: GCC C Linker
+gcc  -o "PruebaHilos"  ./hilos.o   -lcommons -lpthread
+Finished building target: PruebaHilos
+ 
+
+19:35:56 Build Finished (took 175ms)
+

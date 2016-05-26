@@ -1,0 +1,59 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <commons/config.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <sockets.h>
+#include <estructuras.h>
+#define PORT "8100"
+
+/*void *get_in_addr(struct sockaddr *sa) {
+ if (sa->sa_family == AF_INET) {
+ return &(((struct sockaddr_in*) sa)->sin_addr);
+ }
+
+ return &(((struct sockaddr_in6*) sa)->sin6_addr);
+ }*/
+
+int main(int argc, char* argv[]) {
+	if (argc != 2) {
+		printf("Cantidad Invalida de argumentos\n");
+		return 1;
+	}
+	t_config* cfgUMC = config_create(argv[1]);
+	struct sockaddr_in unServer;
+	char* buffer = malloc(50);
+	struct sockaddr_in direccionServidor;
+	int servidor = crearServer(&direccionServidor,	config_get_int_value(cfgUMC, "PUERTO_UMC")); //Creo un SV y devuelvo el socket
+
+	if (bind(servidor, (void*) &direccionServidor, sizeof(direccionServidor))
+	 != 0) {
+	 perror("Falló el bind");
+	 return 1;
+	 }
+
+	printf("Estoy escuchando UMC\n");
+	 listen(servidor, 100);
+	 int cliente;
+while(1){
+		 cliente = recibirCliente(servidor);
+
+		 int bytesRecibidos = recv(cliente, buffer,
+		 sizeof("Recibí una conexión del %d bytes \n"), 0);
+
+		 if (bytesRecibidos <= 0) {
+		 perror("Se ha perdido contacto ");
+		 exit(0);
+
+		 }
+
+
+}
+	free(buffer);
+	return 0;
+}

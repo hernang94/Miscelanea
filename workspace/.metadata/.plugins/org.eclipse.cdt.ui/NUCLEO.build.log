@@ -1,0 +1,30 @@
+00:49:56 **** Build of configuration Debug for project NUCLEO ****
+make all 
+Building file: ../nucleo.c
+Invoking: GCC C Compiler
+gcc -I"/home/utnso/tp-2016-1c-SO-2016-1C/Librerias" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"nucleo.d" -MT"nucleo.d" -o "nucleo.o" "../nucleo.c"
+../nucleo.c:22:2: error: conflicting types for ‘t_Escucha’
+ }t_Escucha;
+  ^
+In file included from ../nucleo.c:10:0:
+/home/utnso/tp-2016-1c-SO-2016-1C/Librerias/estructuras.h:23:2: note: previous declaration of ‘t_Escucha’ was here
+ }t_Escucha;
+  ^
+../nucleo.c: In function ‘main’:
+../nucleo.c:144:12: warning: variable ‘t3’ set but not used [-Wunused-but-set-variable]
+  int t1,t2,t3;
+            ^
+../nucleo.c:144:9: warning: variable ‘t2’ set but not used [-Wunused-but-set-variable]
+  int t1,t2,t3;
+         ^
+../nucleo.c:144:6: warning: variable ‘t1’ set but not used [-Wunused-but-set-variable]
+  int t1,t2,t3;
+      ^
+../nucleo.c: In function ‘planificarPCBs’:
+../nucleo.c:137:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [nucleo.o] Error 1
+
+00:49:56 Build Finished (took 111ms)
+

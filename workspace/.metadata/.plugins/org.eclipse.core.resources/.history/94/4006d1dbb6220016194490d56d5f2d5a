@@ -1,0 +1,74 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+typedef enum {
+	ID_NUCLEO, ID_CPU, ID_CONSOLA, ID_UMC, ID_SWAP
+} identificadores;
+int main(void) {
+	struct sockaddr_in direccionServidor;
+	direccionServidor.sin_family = AF_INET;
+	direccionServidor.sin_addr.s_addr = INADDR_ANY;
+	direccionServidor.sin_port = htons(8300);
+
+	int servidor = socket(AF_INET, SOCK_STREAM, 0);
+
+	int activado = 1;
+	setsockopt(servidor, SOL_SOCKET, SO_REUSEADDR, &activado, sizeof(activado));
+
+	if (bind(servidor, (void*) &direccionServidor, sizeof(direccionServidor))
+			!= 0) {
+		perror("Falló el bind");
+		return 1;
+	}
+
+	printf("Estoy escuchando\n");
+	listen(servidor, 100);
+
+	//------------------------------
+
+	struct sockaddr_in direccionCliente;
+	unsigned int tamanioDireccion = sizeof(struct sockaddr_in);
+	int cliente = accept(servidor, (void*) &direccionCliente,
+			&tamanioDireccion);
+
+	printf("Recibí una conexión en %d!!\n", cliente);
+
+	//------------------------------
+
+	void* buffer = malloc(1000);
+
+	int bytesRecibidos = recv(cliente, buffer, 1000, 0);
+	if (bytesRecibidos <= 0) {
+		perror("Se perdio conexion con la UMC");
+		return 1;
+	}
+
+	void* id = malloc(sizeof(uint8_t));
+
+	memcpy(id, buffer, sizeof(uint8_t));
+	printf("%d",(int)&id);
+	switch ((int) id) {
+	case ID_CPU: {
+		//Crear nuevo hilo
+		printf("Recibi un CPU");
+		break;
+	}
+	case ID_NUCLEO: {
+		//Crear hilo nucleo
+		printf("Recibi un nucleo(?");
+		break;
+	}
+	default: {
+		printf("No es algo que espero");
+		close(cliente);
+		printf("Y volo volo");
+	}
+	}
+
+	free(buffer);
+
+	return 0;
+}

@@ -1,0 +1,62 @@
+17:47:10 **** Incremental Build of configuration Debug for project Pruebas ****
+make all 
+Building file: ../src/cliente.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/cliente.d" -MT"src/cliente.d" -o "src/cliente.o" "../src/cliente.c"
+../src/cliente.c: In function ‘main’:
+../src/cliente.c:8:9: error: stray ‘\303’ in program
+  struct sockaddr_in direcciónServidor;
+         ^
+../src/cliente.c:8:9: error: stray ‘\263’ in program
+../src/cliente.c:8:30: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘nServidor’
+  struct sockaddr_in direcciónServidor;
+                              ^
+../src/cliente.c:8:30: error: ‘nServidor’ undeclared (first use in this function)
+../src/cliente.c:8:30: note: each undeclared identifier is reported only once for each function it appears in
+../src/cliente.c:9:2: error: stray ‘\303’ in program
+  direcciónServidor.sin_family = AF_INET;
+  ^
+../src/cliente.c:9:2: error: stray ‘\263’ in program
+../src/cliente.c:9:2: error: unknown type name ‘direcci’
+../src/cliente.c:9:20: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+  direcciónServidor.sin_family = AF_INET;
+                    ^
+../src/cliente.c:10:2: error: stray ‘\303’ in program
+  direcciónServidor.sin_addr.s_addr = inet_addr("127.0.0.1");
+  ^
+../src/cliente.c:10:2: error: stray ‘\263’ in program
+../src/cliente.c:10:2: error: unknown type name ‘direcci’
+../src/cliente.c:10:20: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+  direcciónServidor.sin_addr.s_addr = inet_addr("127.0.0.1");
+                    ^
+../src/cliente.c:11:2: error: stray ‘\303’ in program
+  direcciónServidor.sin_port = htons(8080);
+  ^
+../src/cliente.c:11:2: error: stray ‘\263’ in program
+../src/cliente.c:11:2: error: unknown type name ‘direcci’
+../src/cliente.c:11:20: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+  direcciónServidor.sin_port = htons(8080);
+                    ^
+../src/cliente.c:14:2: error: stray ‘\303’ in program
+  if (connect(cliente, (void*) &direcciónServidor, sizeof(direcciónServidor)) != 0) {
+  ^
+../src/cliente.c:14:2: error: stray ‘\263’ in program
+../src/cliente.c:14:32: error: ‘direcci’ undeclared (first use in this function)
+  if (connect(cliente, (void*) &direcciónServidor, sizeof(direcciónServidor)) != 0) {
+                                ^
+../src/cliente.c:14:41: error: expected ‘)’ before ‘nServidor’
+  if (connect(cliente, (void*) &direcciónServidor, sizeof(direcciónServidor)) != 0) {
+                                         ^
+../src/cliente.c:14:41: error: stray ‘\303’ in program
+../src/cliente.c:14:41: error: stray ‘\263’ in program
+../src/cliente.c:14:41: error: too few arguments to function ‘connect’
+In file included from /usr/include/netinet/in.h:23:0,
+                 from /usr/include/arpa/inet.h:22,
+                 from ../src/cliente.c:4:
+/usr/include/i386-linux-gnu/sys/socket.h:137:12: note: declared here
+ extern int connect (int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len);
+            ^
+make: *** [src/cliente.o] Error 1
+
+17:47:11 Build Finished (took 248ms)
+

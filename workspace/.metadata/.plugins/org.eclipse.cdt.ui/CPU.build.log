@@ -1,0 +1,73 @@
+15:34:11 **** Build of configuration Debug for project CPU ****
+make all 
+Building file: ../CPU.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"CPU.d" -MT"CPU.d" -o "CPU.o" "../CPU.c"
+Finished building: ../CPU.c
+ 
+Building file: ../primitivas.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"primitivas.d" -MT"primitivas.d" -o "primitivas.o" "../primitivas.c"
+../primitivas.c: In function ‘obtenerValorCompartida’:
+../primitivas.c:35:2: warning: format ‘%c’ expects argument of type ‘int’, but argument 2 has type ‘t_nombre_compartida’ [-Wformat=]
+  printf("obtenerValorCompartida %c\n", variable);
+  ^
+../primitivas.c: In function ‘asignarValorCompartida’:
+../primitivas.c:42:2: warning: format ‘%c’ expects argument of type ‘int’, but argument 2 has type ‘t_nombre_compartida’ [-Wformat=]
+  printf("asignarValorCompartida a var %c el valor %d\n ", variable, valor);
+  ^
+../primitivas.c: In function ‘irAlLabel’:
+../primitivas.c:48:2: warning: format ‘%c’ expects argument of type ‘int’, but argument 2 has type ‘t_nombre_etiqueta’ [-Wformat=]
+  printf("irAlLabel %c\n", etiqueta);
+  ^
+../primitivas.c: In function ‘llamarFuncion’:
+../primitivas.c:56:4: warning: format ‘%c’ expects argument of type ‘int’, but argument 2 has type ‘t_nombre_etiqueta’ [-Wformat=]
+    donde_retornar, linea_en_ejecuccion);
+    ^
+../primitivas.c: In function ‘imprimirTexto’:
+../primitivas.c:72:2: warning: format ‘%c’ expects argument of type ‘int’, but argument 2 has type ‘char *’ [-Wformat=]
+  printf("imprimirTexto %c\n", texto);
+  ^
+../primitivas.c: In function ‘wait’:
+../primitivas.c:81:2: warning: format ‘%c’ expects argument of type ‘int’, but argument 2 has type ‘t_nombre_semaforo’ [-Wformat=]
+  printf("wait %c\n", identificador_semaforo);
+  ^
+../primitivas.c: In function ‘signal’:
+../primitivas.c:86:2: warning: format ‘%c’ expects argument of type ‘int’, but argument 2 has type ‘t_nombre_semaforo’ [-Wformat=]
+  printf("signal %c\n", identificador_semaforo);
+  ^
+../primitivas.c: At top level:
+../primitivas.c:97:3: warning: initialization from incompatible pointer type [enabled by default]
+   .AnSISOP_irAlLabel = irAlLabel,
+   ^
+../primitivas.c:97:3: warning: (near initialization for ‘funciones.AnSISOP_irAlLabel’) [enabled by default]
+../primitivas.c:99:3: warning: initialization from incompatible pointer type [enabled by default]
+   .AnSISOP_retornar = retornar,
+   ^
+../primitivas.c:99:3: warning: (near initialization for ‘funciones.AnSISOP_retornar’) [enabled by default]
+../primitivas.c:100:3: warning: initialization from incompatible pointer type [enabled by default]
+   .AnSISOP_entradaSalida = entradaSalida,
+   ^
+../primitivas.c:100:3: warning: (near initialization for ‘funciones.AnSISOP_entradaSalida’) [enabled by default]
+../primitivas.c:108:3: warning: initialization from incompatible pointer type [enabled by default]
+   .AnSISOP_wait = wait,
+   ^
+../primitivas.c:108:3: warning: (near initialization for ‘kernelFunc.AnSISOP_wait’) [enabled by default]
+../primitivas.c:109:3: warning: initialization from incompatible pointer type [enabled by default]
+   .AnSISOP_signal = signal,
+   ^
+../primitivas.c:109:3: warning: (near initialization for ‘kernelFunc.AnSISOP_signal’) [enabled by default]
+Finished building: ../primitivas.c
+ 
+Building target: CPU
+Invoking: GCC C++ Linker
+g++  -o "CPU"  ./CPU.o ./primitivas.o   -lcommons -lansisop-parser
+./primitivas.o: En la función `main':
+/home/utnso/tp-2016-1c-SO-2016-1C/cpu/Debug/../primitivas.c:121: definiciones múltiples de `main'
+./CPU.o:/home/utnso/tp-2016-1c-SO-2016-1C/cpu/Debug/../CPU.c:37: primero se definió aquí
+/usr/bin/ld: no se puede encontrar -lansisop-parser
+collect2: error: ld returned 1 exit status
+make: *** [CPU] Error 1
+
+15:34:11 Build Finished (took 258ms)
+

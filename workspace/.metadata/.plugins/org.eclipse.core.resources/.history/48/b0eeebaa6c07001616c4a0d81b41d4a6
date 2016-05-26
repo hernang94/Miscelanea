@@ -1,0 +1,94 @@
+/*
+ ============================================================================
+ Name        : UMC.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+
+int main(void) {
+	//---------------------------------CREO SOCKET SERVIDOR
+
+	struct sockaddr_in direccionServidor;
+	direccionServidor.sin_family = AF_INET;
+	direccionServidor.sin_addr.s_addr = INADDR_ANY;
+
+	direccionServidor.sin_port = htons(8100);
+
+	int servidor = socket(AF_INET, SOCK_STREAM, 0);
+
+	int activado = 1;
+	setsockopt(servidor, SOL_SOCKET, SO_REUSEADDR, &activado, sizeof(activado));
+
+	if (bind(servidor, (void*) &direccionServidor, sizeof(direccionServidor))
+			!= 0) {
+		perror("Falló el bind");
+		return 1;
+	}
+
+	printf("Estoy escuchando\n");
+	listen(servidor, 100);
+	//---------------------------------FIN SOCKET SERVIDOR
+	//---------------------------------SOCKETS CLIENTES
+
+	struct sockaddr_in direccionCliente;
+	unsigned int tamanioDireccion;
+	int cliente = accept(servidor, (void*) &direccionCliente,
+			&tamanioDireccion);
+
+	printf("Recibí una conexión en %d!!\n", cliente);
+
+	char* buffer = malloc(1000);
+
+		while (1) {
+			int bytesRecibidos = recv(cliente, buffer, 1000, 0);
+			if (bytesRecibidos <= 0) {
+				perror("El chabón se desconectó o bla.");
+				return 1;
+			}
+
+			buffer[bytesRecibidos] = '\0';
+			printf("Me llegaron %d bytes con %s\n", bytesRecibidos, buffer);
+		}
+	//--------------------------------- FIN SOCKETS CLIENTES
+
+	//---------------------------------UMC COMO CLIENTE
+	char* buffer_sv = malloc(13);
+		struct sockaddr_in direccion_SWAP;
+		direccion_SWAP.sin_family = AF_INET;
+		direccion_SWAP.sin_addr.s_addr = inet_addr("127.0.0.1");
+		direccion_SWAP.sin_port = htons(8200);
+
+		int cliente_umc = socket(AF_INET, SOCK_STREAM, 0);
+
+		if (connect(cliente_umc, (void*) &direccion_SWAP, sizeof(direccion_SWAP))
+				!= 0) {
+			perror("No se pudo conectar");
+			return 1;
+		} else {
+			int bytesRecibidos = recv(cliente_umc, buffer_sv, 13, 0);
+			if (bytesRecibidos <= 0) {
+				perror("El servidor se cayó.");
+				return 1;
+			}
+			printf("%s",buffer_sv);
+		}
+
+		while (1) {
+			char mensaje[1000];
+			scanf("%s", mensaje);
+
+			send(cliente_umc, mensaje, strlen(mensaje), 0);
+
+		}
+		free(buffer_sv);
+return 0;
+}

@@ -1,0 +1,6 @@
+22:19:27 **** Incremental Build of configuration Default for project tp-2016-1c-SO-2016-1C ****
+make all 
+make: *** No hay ninguna regla para construir el objetivo «all».  Alto.
+
+22:19:27 Build Finished (took 176ms)
+

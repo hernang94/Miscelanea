@@ -1,0 +1,39 @@
+17:47:11 **** Build of configuration Debug for project pruebaParser ****
+make all 
+Building file: ../src/pruebaParser.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pruebaParser.d" -MT"src/pruebaParser.d" -o "src/pruebaParser.o" "../src/pruebaParser.c"
+../src/pruebaParser.c:83:3: warning: initialization from incompatible pointer type [enabled by default]
+Finished building: ../src/pruebaParser.c
+ 
+Building target: pruebaParser
+Invoking: GCC C Linker
+gcc  -o "pruebaParser"  ./src/pruebaParser.o   -lparser-ansisop -lcommons
+   .AnSISOP_definirVariable  = definirVariable,
+   ^
+../src/pruebaParser.c:83:3: warning: (near initialization for ‘functions.AnSISOP_definirVariable’) [enabled by default]
+../src/pruebaParser.c:84:3: warning: initialization from incompatible pointer type [enabled by default]
+   .AnSISOP_obtenerPosicionVariable = obtenerPosicionVariable,
+   ^
+../src/pruebaParser.c:84:3: warning: (near initialization for ‘functions.AnSISOP_obtenerPosicionVariable’) [enabled by default]
+../src/pruebaParser.c:85:3: warning: initialization from incompatible pointer type [enabled by default]
+   .AnSISOP_dereferenciar   = dereferenciar,
+   ^
+../src/pruebaParser.c:85:3: warning: (near initialization for ‘functions.AnSISOP_dereferenciar’) [enabled by default]
+../src/pruebaParser.c:87:3: warning: initialization from incompatible pointer type [enabled by default]
+   .AnSISOP_obtenerValorCompartida = obtenerValorCompartida,
+   ^
+../src/pruebaParser.c:87:3: warning: (near initialization for ‘functions.AnSISOP_obtenerValorCompartida’) [enabled by default]
+../src/pruebaParser.c:88:3: warning: initialization from incompatible pointer type [enabled by default]
+   .AnSISOP_asignarValorCompartida = asignarValorCompartida,
+   ^
+../src/pruebaParser.c:88:3: warning: (near initialization for ‘functions.AnSISOP_asignarValorCompartida’) [enabled by default]
+../src/pruebaParser.c:91:3: warning: initialization from incompatible pointer type [enabled by default]
+   .AnSISOP_llamarConRetorno  = llamarConRetorno,
+   ^
+../src/pruebaParser.c:91:3: warning: (near initialization for ‘functions.AnSISOP_llamarConRetorno’) [enabled by default]
+Finished building target: pruebaParser
+ 
+
+17:47:11 Build Finished (took 356ms)
+
