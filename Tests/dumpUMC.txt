@@ -1,0 +1,43 @@
+PID	Cantidad de Frames Asignados	Cantidad de Paginas
+2021	0                            	4
+Numero de Pagina	Estado
+0               	S
+1               	S
+2               	S
+3               	S
+PID	Cantidad de Frames Asignados	Cantidad de Paginas
+2022	0                            	7
+Numero de Pagina	Estado
+0               	S
+1               	S
+2               	S
+3               	S
+4               	S
+5               	S
+6               	S
+PID	Cantidad de Frames Asignados	Cantidad de Paginas
+2033	0                            	7
+Numero de Pagina	Estado
+0               	S
+1               	S
+2               	S
+3               	S
+4               	S
+5               	S
+6               	S
+
+Dump de Memoria Principal
+0x000000: 48 6f 6c 61 70 65 72 72 6f 00 00 00 19 00 00 00 Holaperro.......
+0x000010: e5 07 00 00 04 48 6f 6c 61 70 65 72 72 6f 00 00 .....Holaperro..
+0x000020: 00 19 00 00 00 e5 07 00 00 04 48 6f 6c 61 70 65 ..........Holape
+0x000030: 72 72 6f 00 00 00 19 00 00 00 e5 07 00 00 04 48 rro............H
+0x000040: 6f 6c 61 70 65 72 72 6f 00 00 00 19 00 00 00 e5 olaperro........
+0x000050: 07 00 00 04 48 6f 6c 61 70 65 72 72 6f 00 00 00 ....Holaperro...
+0x000060: 19 00 00 00 e5 07 00 00 04 48 6f 6c 61 70 65 72 .........Holaper
+0x000070: 72 6f 00 00 00 19 00 00 00 e5 07 00 00 04 48 6f ro............Ho
+0x000080: 6c 61 70 65 72 72 6f 00 00 00 19 00 00 00 e5 07 laperro.........
+0x000090: 00 00 04 48 6f 6c 61 70 65 72 72 6f 00 00 00 19 ...Holaperro....
+0x0000a0: 00 00 00 e5 07 00 00 04 48 6f 6c 61 70 65 72 72 ........Holaperr
+0x0000b0: 6f 00 00 00 19 00 00 00 e5 07 00 00 04 48 6f 6c o............Hol
+0x0000c0: 61 70 65 72 72 6f 00 00 00 19 00 00 00 e5 07 00 aperro..........
+0x0000d0: 00 04                                           ..              
