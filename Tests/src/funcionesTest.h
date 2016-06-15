@@ -17,13 +17,13 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
-
+#include <commons/config.h>
 #include "estructurasUMCTest.h"
 #include "hexdumpTest.h"
 #include "variablesGlobalesUMCTest.h"
 void inicializarPrograma(uint32_t pid,int cantPaginas,char* codPrograma);
-void* solicitarBytes(int numPagina,int offset,int tamaniooPag,uint32_t pid,int clienteCPU);
-void almacenarBytesPagina(int numPagina,int offset,int tamaniooPag,void*buffer,uint32_t pid);
+void solicitarBytes(int numPagina,int offset,int tamaniooPag,uint32_t pid,int clienteCPU);
+void almacenarBytesPagina(int numPagina,int offset,int tamaniooPag,void*buffer,uint32_t pid,int clienteCPU);
 void finalizarPrograma(uint32_t pid);
 void proc_Destroy(t_nodo_lista_procesos *self);
 void pagina_Destroy(t_nodo_lista_paginas*self);
@@ -56,7 +56,7 @@ void algoritmoDeReemplazo(uint32_t pid, uint32_t pagNueva, void *codigo);
 void cargarenTLB(uint32_t pid, int numPagina, uint32_t nroFrame) ;
 int cargarPaginaenMemoria(uint32_t pid, int numPag, void*buffer);
 int inicializarEnSwap(int socketSwap, int cantidadPaginasCodigo, uint32_t pid) ;
-void*pedirAlSwap(int numPagina, uint32_t pid) ;
+//void*pedirAlSwap(int numPagina, uint32_t pid) ;
 void liberarPaginas(int indice) ;
 void dumpearEstructuraPaginas(t_nodo_lista_procesos*nodoAux, FILE*archivo) ;
 void dumpPIDparaDumpTotal(t_nodo_lista_procesos*nodoAux, FILE*archivo) ;
@@ -74,12 +74,4 @@ void avisarNucleoFinPrograma(uint32_t pid) ;
 	//	void*buffer, uint32_t pid) ;
 //void finalizarPrograma(uint32_t pid) ;
 void cambioProceso(uint32_t idNuevoPrograma, uint32_t * idProcesoActivo) ;
-typedef enum{INICIAR,LEER,ESCRIBIR,FINALIZAR}Orden;
-typedef struct{
-	int PID;
-	int orden;  //0=INICIAR, 1=LEER, 2=ESCRIBIR, 3=FINALIZAR
-	int cantPaginas;
-	int nroPagina;
-	char* contenido;
-}OrdenProceso;
 #endif /* FUNCIONESTEST_H_ */

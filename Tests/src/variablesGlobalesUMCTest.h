@@ -25,6 +25,7 @@ pthread_mutex_t mutexNucleo;
 uint32_t accesosAMemoria;
 uint16_t entradasTLB;
 t_log* logger;
+int cantidadDeFrames;
 int socketSwap;
 int marcos_x_proc;
 int tamanioFrame;

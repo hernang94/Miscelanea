@@ -5,21 +5,21 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/Tests.c \
-../src/estructurasUMC.c \
-../src/funciones.c \
-../src/hexdump.c 
+../src/estructurasUMCTest.c \
+../src/funcionesTest.c \
+../src/hexdumpTest.c 
 
 OBJS += \
 ./src/Tests.o \
-./src/estructurasUMC.o \
-./src/funciones.o \
-./src/hexdump.o 
+./src/estructurasUMCTest.o \
+./src/funcionesTest.o \
+./src/hexdumpTest.o 
 
 C_DEPS += \
 ./src/Tests.d \
-./src/estructurasUMC.d \
-./src/funciones.d \
-./src/hexdump.d 
+./src/estructurasUMCTest.d \
+./src/funcionesTest.d \
+./src/hexdumpTest.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

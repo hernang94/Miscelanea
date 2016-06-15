@@ -8,13 +8,12 @@
 #include "hexdumpTest.h"
 
 #ifndef HEXDUMP_COLS
-#define HEXDUMP_COLS 16
+#define HEXDUMP_COLS 21
 #endif
 
 void hexdump(void *mem, unsigned int len,FILE*archi)
 {
         unsigned int i, j;
-
         for(i = 0; i < len + ((len % HEXDUMP_COLS) ? (HEXDUMP_COLS - len % HEXDUMP_COLS) : 0); i++)
         {
                 /* print offset */

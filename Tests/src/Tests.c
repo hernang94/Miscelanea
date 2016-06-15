@@ -31,15 +31,16 @@ void inicializar(){
 		listaDeProcesos = list_create();
 		listaDeFrames=list_create();
 		tlb=list_create();
+		cantidadDeFrames = 10;
 		accesosAMemoria=0;
 		marcos_x_proc=2;
 		tamanioFrame = 21;
 			tamanioTotalmemoria = (tamanioFrame)
 					* 10;
 			memoriaprincipal = malloc(tamanioTotalmemoria);
-			entradasTLB=5;
+			entradasTLB=2;
 			retardoUMC=0;
-			algoritmo="CLOCK";
+			algoritmo="CLOCK-M";
 			int i,j;
 			//cantidaddeFrames
 		for(i=0;i<10;i++){
@@ -52,6 +53,9 @@ void inicializar(){
 		}
 		for(j=0;j<entradasTLB;j++){
 			t_entrada_TLB*nodoTLBAux=malloc(sizeof(t_entrada_TLB));
+			nodoTLBAux->id_frame=0;
+			nodoTLBAux->pid=0;
+			nodoTLBAux->nro_pagina=0;
 			nodoTLBAux->ultimo_acceso=accesosAMemoria;
 			list_add(tlb,nodoTLBAux);
 		}
@@ -77,27 +81,50 @@ int main() {
   uint32_t pid3=2033;
   char*codigo=malloc(10);
   strcpy(codigo,"Holaperro");
+  codigo[10]='\0';
+  /*char*codigo2=malloc(5);
+    strcpy(codigo2,"Holis");
+    codigo[5]='\0';*/
+    //int tamaniocad= strlen(codigo2);
   inicializarPrograma(pid,4,codigo);
   inicializarPrograma(pid2,7,codigo);
   inicializarPrograma(pid3,7,codigo);
-  char*mensajito=(char*)lecturaMemoria(1,0,5);
-  mensajito[5]='\0';
   cargarPaginaenMemoria(pid,2,(void*)codigo);
-  codigo=malloc(10);
-  strcpy(codigo,"Holaperro");
-  cargarPaginaenMemoria(pid,3,(void*)codigo);
+  //cargarenTLB(pid,2,0);
+  //almacenarBytesPagina(5,0,tamaniocad,(void*)codigo2,pid2,0);
   codigo=malloc(10);
   strcpy(codigo,"Holaperro");
   cargarPaginaenMemoria(pid,1,(void*)codigo);
+  actualizarBitModificado(0);
   codigo=malloc(10);
+  //cargarenTLB(pid,1,1);
   strcpy(codigo,"Holaperro");
   cargarPaginaenMemoria(pid,0,(void*)codigo);
+  //cargarenTLB(pid,0,2);
+  int frame=buscarenTLB(pid,0);
+  uint32_t pid4=1234;
+  cambioProceso(4325,&pid4);
+  printf("%d\n",pid4);
+  printf("%d\n",frame);
+  //flushTLB();
+  //flushMemoria();
+  //actualizarBitModificado(0);
+  //actualizarBitReferencia(0);
+  //finalizarPrograma(pid);
+  //liberarMarcos(pid); OK
+  //int indice=encontrarPosicionEnProcesos(456); OK
+  //liberarPaginas(indice); OK
+
+  /*codigo=malloc(10);
+  strcpy(codigo,"Holaperro");
+  cargarPaginaenMemoria(pid,3,(void*)codigo);
   codigo=malloc(10);
   strcpy(codigo,"Holaperro");
   cargarPaginaenMemoria(pid2,6,(void*)codigo);
   codigo=malloc(10);
   strcpy(codigo,"Holaperro");
   cargarPaginaenMemoria(pid2,5,(void*)codigo);
+
   codigo=malloc(10);
   strcpy(codigo,"Holaperro");
   cargarPaginaenMemoria(pid2,4,(void*)codigo);
@@ -112,13 +139,14 @@ int main() {
   cargarPaginaenMemoria(pid2,1,(void*)codigo);
   codigo=malloc(10);
     strcpy(codigo,"Holaperro");
-  int respuesta=cargarPaginaenMemoria(pid3,3,(void*)codigo);
+  int respuesta=cargarPaginaenMemoria(pid3,3,(void*)codigo);*/
   int a= cantidadFramesDisponibles();
-  printf("Respuesta: %d\n",respuesta);
+  //printf("Respuesta: %d\n",respuesta);
   printf("%d\n",a);
-  printf("%s\n",mensajito);
+  //printf("%s\n",mensajito);
+  usleep(2000*1000);
   dumpTotal();
   fclose(archi);
- //free(memoriaprincipal);
+ free(memoriaprincipal);
   return 0;
 }

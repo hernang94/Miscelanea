@@ -9,6 +9,7 @@
 #define ESTRUCTURASUMCTEST_H_
 
 #include <commons/collections/list.h>
+#include <stdint.h>
 
 struct nodo_lista_frames {
 uint32_t id_frame;
